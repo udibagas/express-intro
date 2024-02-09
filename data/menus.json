@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Big Burger",
+    "CategoryId": 1,
+    "stock": 55,
+    "price": 36000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Cheeseburger Deluxe",
+    "CategoryId": 1,
+    "stock": 45,
+    "price": 27500,
+    "createdAt": "2021-08-03"
+  },
+  {
+    "name": "Cheeseburger",
+    "CategoryId": 1,
+    "stock": 40,
+    "price": 28500,
+    "createdAt": "2021-08-03"
+  },
+  {
+    "name": "Beef Burger",
+    "CategoryId": 1,
+    "stock": 50,
+    "price": 23000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Ayam Goreng",
+    "CategoryId": 2,
+    "stock": 50,
+    "price": 19000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Paket 2 Ayam",
+    "CategoryId": 2,
+    "stock": 35,
+    "price": 36000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Iced Lychee Tea",
+    "CategoryId": 3,
+    "stock": 30,
+    "price": 29500,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Hot Coffee",
+    "CategoryId": 3,
+    "stock": 20,
+    "price": 11000,
+    "createdAt": "2021-06-03"
+  },
+  {
+    "name": "Coca-Cola",
+    "CategoryId": 3,
+    "stock": 30,
+    "price": 13000,
+    "createdAt": "2021-06-03"
+  },
+  {
+    "name": "Sweet Corn",
+    "CategoryId": 4,
+    "stock": 20,
+    "price": 11000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "French Fries",
+    "CategoryId": 4,
+    "stock": 45,
+    "price": 23000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Apple Pie",
+    "CategoryId": 4,
+    "stock": 30,
+    "price": 11000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Family Bertiga Ayam",
+    "CategoryId": 5,
+    "stock": 40,
+    "price": 53000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Family Weekend Berempat Ayam",
+    "CategoryId": 5,
+    "stock": 55,
+    "price": 144000,
+    "createdAt": "2021-07-03"
+  },
+  {
+    "name": "Fish Filet Burger",
+    "CategoryId": 1,
+    "stock": 25,
+    "price": 27500,
+    "createdAt": "2021-07-03"
+  },
+  {
+    "name": "Spicy Burger",
+    "CategoryId": 1,
+    "stock": 45,
+    "price": 36000,
+    "createdAt": "2021-07-03"
+  },
+  {
+    "name": "Chicken Burder Deluxe",
+    "CategoryId": 1,
+    "stock": 35,
+    "price": 23000,
+    "createdAt": "2021-07-03"
+  },
+  {
+    "name": "Milo",
+    "CategoryId": 3,
+    "stock": 25,
+    "price": 13000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Fanta",
+    "CategoryId": 3,
+    "stock": 25,
+    "price": 13000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Nugget",
+    "CategoryId": 4,
+    "stock": 40,
+    "price": 21000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Chicken Bites",
+    "CategoryId": 4,
+    "stock": 50,
+    "price": 21000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Chicken Fingers",
+    "CategoryId": 4,
+    "stock": 40,
+    "price": 11000,
+    "createdAt": "2021-03-03"
+  },
+  {
+    "name": "Triple Burger With Cheese",
+    "CategoryId": 1,
+    "stock": 50,
+    "price": 37000,
+    "createdAt": "2021-03-03"
+  }
+]

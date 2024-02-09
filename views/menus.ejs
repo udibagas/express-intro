@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Menus</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="title">All Menus</h1>
+
+    <p>
+      <a href="/menus/add">Add Menu</a>
+    </p>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Stock</th>
+          <th>Price</th>
+          <th>Created At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% menus.forEach(el => { %>
+        <tr>
+          <td><%= el.id %></td>
+          <td><%= el.name %></td>
+          <td><%= el.category %></td>
+          <td><%= el.stock %></td>
+          <td><%= el.priceInRupiah %></td>
+          <td><%= el.formattedCreatedAt() %></td>
+          <td>
+            <a href="/menus/delete/<%= el.id %>">Delete</a> |
+            <a href="/menus/edit/<%= el.id %>">Edit</a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
