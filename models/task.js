@@ -64,12 +64,14 @@ class Task {
   }
 
   static async insert(newTask) {
+    const { title, deadline, priority, UserId } = newTask;
+    this.validate({ title, deadline, priority, UserId });
+
     const query = `
-      INSERT INTO "Tasks" ("title", "deadline", "priority", "UserId")
+      INSERT INTO "Taskss" ("title", "deadline", "priority", "UserId")
       VALUES ($1, $2, $3, $4)
     `;
 
-    const { title, deadline, priority, UserId } = newTask;
     await pool.query(query, [title, deadline, priority, UserId]);
   }
 
@@ -93,6 +95,9 @@ class Task {
   }
 
   static async updateById(id, data) {
+    const { title, deadline, priority, UserId } = data;
+    this.validate({ title, deadline, priority, UserId });
+
     const query = `
       UPDATE "Tasks"
       SET
@@ -103,8 +108,38 @@ class Task {
       WHERE id = $5
     `;
 
-    const { title, deadline, priority, UserId } = data;
     await pool.query(query, [title, deadline, priority, UserId, id]);
+  }
+
+  static validate({ title, deadline, priority, UserId }) {
+    const errors = [];
+
+    if (!title) {
+      errors.push("Title is required");
+    }
+
+    if (!deadline) {
+      errors.push("Deadline is required");
+    }
+
+    if (!priority) {
+      errors.push("Priority is required");
+    }
+
+    if (priority && !["L", "M", "H", "U"].includes(priority)) {
+      errors.push(`Invalid priority`);
+    }
+
+    if (!UserId) {
+      errors.push("PIC is required");
+    }
+
+    if (errors.length) {
+      const message = errors.join(", ");
+      const error = new Error(message);
+      error.type = "ValidationError";
+      throw error;
+    }
   }
 }
 

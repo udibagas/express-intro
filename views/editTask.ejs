@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Task</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>Edit Task</h1>
+    <%- include('partials/_navbar', { page: 'editTask'} ) %>
+
+    <h3>Edit Task</h3>
+
+    <%- include('partials/_error') %>
 
     <form method="post">
       <p>

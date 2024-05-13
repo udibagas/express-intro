@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task App - Home</title>
+    <title>ERROR 500</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <%- include('partials/_navbar', { page: 'home'} ) %>
+    <h1>ERROR 500</h1>
+    <p>Terjadi kesalahan pada sistem dengan error sebagai berikut</p>
+    <div class="error"><%= error.message %></div>
 
-    <h3>Home</h3>
+    <p>Silakan hubungi admin</p>
   </body>
 </html>
