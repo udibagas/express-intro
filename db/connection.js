@@ -2,21 +2,11 @@ const { Pool } = require("pg");
 
 const pool = new Pool({
   user: "postgres",
-  host: "localhost",
-  database: "RestaurantDB",
   password: "postgres",
+  host: "localhost",
   port: 5432,
+  database: "task_app",
   idleTimeoutMillis: 100,
-  connectionTimeoutMillis: 1000,
 });
-
-// (async () => {
-//   try {
-//     const { rows } = await pool.query("SELECT NOW()");
-//     console.log(rows);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// })();
 
 module.exports = pool;

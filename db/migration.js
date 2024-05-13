@@ -1,31 +1,36 @@
 const pool = require("./connection");
 
-const categoriesDDL = `
-  CREATE TABLE IF NOT EXISTS "Categories" (
+const userDDL = `
+  CREATE TABLE IF NOT EXISTS "Users" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR(30) NOT NULL UNIQUE
+    "firstName" VARCHAR(30) NOT NULL,
+    "lastName" VARCHAR(30) NULL,
+    "email" VARCHAR(50) UNIQUE NOT NULL,
+    "gender" CHAR(1) NOT NULL
   )
 `;
 
-const menusDDL = `
-  CREATE TABLE IF NOT EXISTS "Menus" (
+const taskDDL = `
+  CREATE TABLE IF NOT EXISTS "Tasks" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR(50) NOT NULL UNIQUE,
-    "stock" INT NOT NULL,
-    "price" INT NOT NULL,
-    "createdAt" DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "CategoryId" INT NOT NULL REFERENCES "Categories" ("id")
-      ON UPDATE CASCADE
+    "title" VARCHAR NOT NULL,
+    "status" BOOLEAN NOT NULL DEFAULT FALSE,
+    "deadline" DATE NULL,
+    "priority" CHAR(1) NOT NULL DEFAULT 'L',
+    "UserId" INT NOT NULL REFERENCES "Users" ("id")
       ON DELETE CASCADE
+      ON UPDATE CASCADE
   )
 `;
 
 (async () => {
   try {
-    await pool.query(`DROP TABLE IF EXISTS "Menus", "Categories"`);
-    await pool.query(categoriesDDL);
-    await pool.query(menusDDL);
-    console.log("Migration success!");
+    await pool.query(`DROP TABLE IF EXISTS "Tasks", "Users"`);
+    console.log(`Success drop table Users & Tasks`);
+    await pool.query(userDDL);
+    console.log(`Success create table Users`);
+    await pool.query(taskDDL);
+    console.log(`Success create table Tasks`);
   } catch (error) {
     console.log(error.message);
   }

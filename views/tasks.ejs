@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks</title>
+  </head>
+  <body>
+    <h1>Tasks</h1>
+
+    <p>
+      <form>
+        <a href="/tasks/add">Add New Task</a>
+        <select name="priority">
+          <option value="" disabled selected>-- Select Priority --</option>
+          <option value="L">Low</option>
+          <option value="M">Medium</option>
+          <option value="H">High</option>
+          <option value="U">Urgent</option>
+        </select>
+
+        <button type="submit">Filter</button>
+      </form>
+
+      
+    </p>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Title</th>
+          <th>Deadline</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>PIC</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% tasks.forEach((el, index) => { %>
+        <tr>
+          <td><%= ++index %></td>
+          <td><%= el.title %></td>
+          <td><%= el.formattedDeadline %></td>
+          <td><%= el.priorityLabel %></td>
+          <td><%= el.statusLabel %></td>
+          <td><%= el.pic %></td>
+          <td>
+              <a href="/tasks/edit/<%= el.id %>">Update</a> | 
+              <a href="/tasks/delete/<%= el.id %>">Delete</a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,68 +1,89 @@
-const Category = require("../models/category");
-const Menu = require("../models/menu");
+"use strict";
+
+const Task = require("../models/task");
+const User = require("../models/user");
 
 class Controller {
-  static async menus(req, res) {
+  static home(req, res) {
+    res.render("home");
+  }
+
+  static async users(req, res) {
     try {
-      const menus = await Menu.findAll();
-      console.log(menus);
-      res.render("menus", { menus });
+      const users = await User.findAll();
+      res.render("users", { users });
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
   }
 
-  static async addMenu(req, res) {
+  static async tasks(req, res) {
+    const { priority } = req.query;
+
     try {
-      const categories = await Category.findAll();
-      res.render("addMenu", { categories });
+      const tasks = await Task.findAll(priority);
+      res.render("tasks", { tasks });
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
   }
 
-  static async saveMenu(req, res) {
+  static task(req, res) {
     try {
-      await Menu.create(req.body);
-      res.redirect("/");
+      res.send("Task by id");
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
   }
 
-  static async deleteMenu(req, res) {
-    const { id } = req.params;
+  static async addTask(req, res) {
     try {
-      await Menu.destroy(id);
-      res.redirect("/");
+      const users = await User.findAll();
+      res.render("addTask", { users });
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
   }
 
-  static async editMenu(req, res) {
-    const { id } = req.params;
-
+  static async saveTask(req, res) {
     try {
-      const categories = await Category.findAll();
-      const menu = await Menu.findById(id);
-      res.render("editMenu", { categories, menu });
+      await Task.insert(req.body);
+      res.redirect("/tasks");
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
   }
 
-  static async updateMenu(req, res) {
-    const { id } = req.params;
-
+  static async editTask(req, res) {
     try {
-      await Menu.update(id, req.body);
-      res.redirect("/");
+      const task = await Task.findById(req.params.id);
+      const users = await User.findAll();
+      res.render("editTask", { users, task });
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  }
+
+  static async updateTask(req, res) {
+    try {
+      await Task.updateById(req.params.id, req.body);
+      res.redirect("/tasks");
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  }
+
+  static async deleteTask(req, res) {
+    try {
+      await Task.destroyById(req.params.id);
+      res.redirect("/tasks");
     } catch (error) {
       console.log(error);
       res.send(error.message);

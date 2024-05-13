@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Task</title>
+  </head>
+  <body>
+    <h1>Edit Task</h1>
+
+    <form method="post">
+      <p>
+        <label for="title">Title</label> <br />
+        <input type="text" name="title" id="title" value="<%= task.title  %>" />
+      </p>
+
+      <p>
+        <label for="deadline">Deadline</label> <br />
+        <input type="date" name="deadline" id="deadline" value="2024-05-13" />
+      </p>
+
+      <p>
+        <label for="priority">Priority</label> <br />
+        <select name="priority" id="priority">
+          <option value="" disabled>-- Select Priority --</option>
+          <option value="L" <%= task.priority == 'L' ? 'selected' : '' %>>Low</option>
+          <option value="M" <%= task.priority == 'M' ? 'selected' : '' %>>Medium</option>
+          <option value="H" <%= task.priority == 'H' ? 'selected' : '' %>>High</option>
+          <option value="U" <%= task.priority == 'U' ? 'selected' : '' %>>Urgent</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="UserId">PIC</label> <br />
+        <select name="UserId" id="UserId">
+          <option value="" disabled>-- Select PIC --</option>
+          <% users.forEach(el => { %>
+          <option value="<%= el.id %>" <%= task.UserId == el.id ? 'selected' : '' %>><%= el.fullName %></option>
+          <% }) %>
+        </select>
+      </p>
+
+      <p>
+        <button type="submit">Save</button>
+      </p>
+    </form>
+  </body>
+</html>
