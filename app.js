@@ -1,11 +1,9 @@
-const express = require("express");
-const app = express();
+const express = require("express"); // import
+const app = express(); // create instance
 const port = 3000;
+const router = require("./routes");
 
-app.set("view engine", "ejs");
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
-app.use(require("./routes"));
+app.use(router);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
