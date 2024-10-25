@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+  </head>
+  <body>
+    <h1>Menu</h1>
+
+    <table border="1">
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <td><%= menu.name %></td>
+        </tr>
+        <tr>
+          <th>Category</th>
+          <td><%= menu.category %></td>
+        </tr>
+        <tr>
+          <th>Price</th>
+          <td><%= menu.priceInRupiah %></td>
+        </tr>
+        <tr>
+          <th>Stock</th>
+          <td><%= menu.stock %></td>
+        </tr>
+        <tr>
+          <th>Created At</th>
+          <td><%= menu.getFormattedDate() %></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

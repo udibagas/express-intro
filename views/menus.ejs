@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menus</title>
+  </head>
+  <body>
+    <h1>Menus</h1>
+
+    <form>
+      <input type="text" placeholder="Search menu" name="keyword" />
+      <button type="submit">Search</button>
+      <a href="/menus/add">Add Menu</a>
+    </form>
+
+    <br />
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Stock</th>
+          <th>Price</th>
+          <th>Created At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% menus.forEach((el, i) => { %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td>
+            <a href="/menus/<%= el.id %>"><%= el.name %></a>
+          </td>
+          <td><%= el.category %></td>
+          <td><%= el.stock %></td>
+          <td><%= el.priceInRupiah %></td>
+          <td><%= el.getFormattedDate() %></td>
+          <td>
+            <a href="/menus/edit/<%= el.id %>">Edit</a> |
+            <a href="/menus/delete/<%= el.id %>">Delete</a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
