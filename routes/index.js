@@ -1,7 +1,8 @@
-const { getMenus } = require("../controllers");
+const { getMenus, home, categories } = require("../controllers");
 const router = require("express").Router();
 
-router.get("/", getMenus);
+router.get("/", home);
+router.get("/categories", categories);
 router.use("/menus", require("./menus"));
 
 module.exports = router;

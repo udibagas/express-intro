@@ -4,7 +4,9 @@ const port = 3000;
 const router = require("./routes");
 
 app.set("view engine", "ejs");
-app.use(express.urlencoded({ extended: true })); // req.body
+
+app.use(express.static("public")); // serve static content
+app.use(express.urlencoded({ extended: true })); // - application/x-www-form-urlencoded => req.body
 app.use(router);
 
 app.listen(port, () => {

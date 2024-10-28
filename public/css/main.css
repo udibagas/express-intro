@@ -1,0 +1,12 @@
+* {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a.active {
+  font-weight: bold;
+  color: red;
+}
+
+.error {
+  color: red;
+}

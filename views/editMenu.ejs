@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Menu</title>
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
-    <h1>Edit Menu</h1>
+    <%- include('components/_header', { page: '/menus' }) %>
+
+    <h3>Edit Menu</h3>
+
+    <%- include('components/_validationError') %>
 
     <form method="post">
       <p>

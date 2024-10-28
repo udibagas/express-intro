@@ -5,9 +5,11 @@ const {
   editMenu,
   updateMenu,
   deleteMenu,
+  getMenus,
 } = require("../controllers");
 const router = require("express").Router();
 
+router.get("/", getMenus);
 router.get("/add", addMenu);
 router.post("/add", createMenu);
 router.get("/:id", getMenuById);

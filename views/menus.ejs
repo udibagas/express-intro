@@ -4,14 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menus</title>
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
-    <h1>Menus</h1>
+    <%- include('components/_header', { page: '/menus' }) %>
+
+    <h3>Menus</h3>
+
+    <% if (error) { %>
+    <p class="error"><%= error %></p>
+    <% } %>
 
     <form>
       <input type="text" placeholder="Search menu" name="keyword" />
       <button type="submit">Search</button>
-      <a href="/menus/add">Add Menu</a>
     </form>
 
     <br />

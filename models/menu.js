@@ -47,7 +47,7 @@ class Menu {
     });
   }
 
-  static async findById(id) {
+  static async findById(menuId) {
     const query = `
       SELECT
         m.*,
@@ -57,16 +57,14 @@ class Menu {
       WHERE m.id = $1
     `;
 
-    const { rows, rowCount } = await pool.query(query, [id]);
+    const { rows, rowCount } = await pool.query(query, [menuId]);
 
     if (rowCount == 0) {
       throw new Error("Data not found");
     }
 
-    return rows.map((el) => {
-      const { id, name, CategoryId, stock, price, createdAt, category } = el;
-      return new Menu(id, name, CategoryId, stock, price, createdAt, category);
-    })[0];
+    const { id, name, CategoryId, stock, price, createdAt, category } = rows[0];
+    return new Menu(id, name, CategoryId, stock, price, createdAt, category);
   }
 
   //   {
@@ -77,6 +75,8 @@ class Menu {
   //   createdAt: '2024-10-25'
   // }
   static create(data) {
+    this.validate(data);
+
     const query = `
       INSERT INTO "Menus" ("name", "CategoryId", "stock", "price", "createdAt")
       VALUES ($1, $2, $3, $4, $5)
@@ -88,6 +88,8 @@ class Menu {
   }
 
   static update(id, data) {
+    this.validate(data);
+
     const query = `
       UPDATE "Menus"
       SET
@@ -102,8 +104,50 @@ class Menu {
     return pool.query(query, [name, CategoryId, stock, price, createdAt, id]);
   }
 
-  static remove(id) {
-    return pool.query(`DELETE FROM "Menus" WHERE id = $1`, [id]);
+  static async remove(id) {
+    const menu = await this.findById(id);
+
+    if (menu.stock >= 20) {
+      const error = new Error("Menu masih banyak. Ga boleh dihapus");
+      error.name = "ValidationError";
+      throw error;
+    }
+
+    await pool.query(`DELETE FROM "Menus" WHERE id = $1`, [id]);
+  }
+
+  static validate(data) {
+    const { name, CategoryId, stock, price, createdAt } = data;
+
+    const errors = [];
+
+    if (!name) {
+      errors.push("Name is required");
+    }
+
+    if (!CategoryId) {
+      errors.push("Category is required");
+    }
+
+    if (!stock) {
+      errors.push("Stock is required");
+    }
+
+    if (!price) {
+      errors.push("Price is required");
+    }
+
+    if (!createdAt) {
+      errors.push("Created At is required");
+    }
+
+    if (errors.length > 0) {
+      const error = new Error(errors);
+      error.name = "ValidationError";
+      throw error;
+    }
+
+    return true; // optional
   }
 }
 
